@@ -16,4 +16,6 @@ This module comtains mathematical functions.
 
 This module contains string manipulation functions.
 
-`integer_length`: return the length of an integer
+`integer_length`: returns the length of an integer
+
+`string_occurrence`: returns a pointer to a structure struct `string_occurrence_info` containing information about the occurrences of a specified character within the input string
