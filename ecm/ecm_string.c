@@ -59,6 +59,7 @@ struct string_occurrence_info *string_occurrence(char *input_string, char input_
 #endif
         }
     }
+
     return string;
 }
 
