@@ -9,6 +9,13 @@ struct string_occurrence_info *string_occurrence(char *input_string, char input_
     struct string_occurrence_info *string;
     string = (struct string_occurrence_info *)malloc(sizeof(struct string_occurrence_info));
 
+    if (string == NULL) {
+#ifdef DEBUG
+        perror("failed to allocate memory for string");
+#endif
+        return NULL;
+    }
+
     string->token = input_token;
     string->count = 0;
     string->string_length = strlen(input_string);
