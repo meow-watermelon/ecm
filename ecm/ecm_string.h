@@ -2,6 +2,20 @@
 #define ECM_STRING_H
 
 /*
+ * string_insert: insert a string into another string at the offset position
+ *
+*/
+
+extern char *string_insert(char *orig_string, char *insert_string, size_t offset);
+
+/*
+ * string_reverse: return the reversed string of an string
+ *
+*/
+
+extern char *string_reverse(char *input_string);
+
+/*
  * string_occurrence:
  * - Analyzes a given string
  * - Identifies occurrences of a specified character
@@ -24,10 +38,4 @@ extern struct string_occurrence_info *string_occurrence(char *input_string, char
 
 extern short int integer_length(long int integer);
 
-/*
- * string_reverse: return the reversed string of an string
- *
-*/
-
-extern char *string_reverse(char *input_string);
 #endif /* ECM_STRING_H */

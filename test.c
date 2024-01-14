@@ -6,8 +6,10 @@
 int main() {
     long int n = 2;
     long int number = 123456789;
-    char *str1 = "ABCDCBA";
+    char *str1 = "ABCXYZ";
     char c = 'C';
+    char *str2 = "abcdefghijk";
+    char *str3 = "++++";
 
     printf("powi(%ld, %d): %ld\n", n, 5, powi(n, 5));
     printf("integer_length(%ld): %d\n", number, integer_length(number));
@@ -38,6 +40,17 @@ int main() {
 
     free(r);
     r = NULL;
+
+    char *combo = string_insert(str2, str3, 2);
+    if (combo == NULL) {
+        perror("failed to allocate memory for string_insert");
+        exit(EXIT_FAILURE);
+    }
+
+    printf("inserted string: %s\n", combo);
+
+    free(combo);
+    combo = NULL;
 
     return 0;
 }

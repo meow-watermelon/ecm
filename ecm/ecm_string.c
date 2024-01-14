@@ -3,18 +3,74 @@
 #include <string.h>
 #include "ecm_string.h"
 
+char *string_insert(char *orig_string, char *insert_string, size_t offset) {
+    size_t orig_string_length = strlen(orig_string);
+    size_t insert_string_length = strlen(insert_string);
+    size_t alloc_size = orig_string_length + insert_string_length + 1;
+    char *buffer = (char *)malloc(alloc_size);
+
+    if (buffer == NULL) {
+        return NULL;
+    }
+
+    // if offset is greater than or eauqal to original string index boundary then simply combining 2 strings
+    if (offset >= orig_string_length ) {
+        strcpy(buffer, orig_string);
+        strcat(buffer, insert_string);
+
+        return buffer;
+    }
+
+    // if offset is 0 then simply combining 2 strings
+    if (offset == 0) {
+        strcpy(buffer, insert_string);
+        strcat(buffer, orig_string);
+
+        return buffer;
+    }
+
+    size_t index = 0;
+
+    while (index < offset) {
+        buffer[index] = orig_string[index];
+        ++index;
+    }
+
+    // rewind index by 1
+    index = index - 1;
+
+    buffer[index + 1] = '\0';
+
+#ifdef DEBUG
+    printf("index: %zu; pre string: %s\n", index, buffer);
+#endif
+
+    strcat(buffer, insert_string);
+#ifdef DEBUG
+    printf("index: %zu; middle string: %s\n", index, buffer);
+#endif
+
+    while (index < orig_string_length) {
+        buffer[index + insert_string_length + 1] = orig_string[index + 1];
+        ++index;
+    }
+
+    buffer[orig_string_length + insert_string_length] = '\0';
+
+    return buffer;
+}
+
 char *string_reverse(char *input_string) {
     size_t string_length = strlen(input_string);
 #ifdef DEBUG
     printf("string length: %zu\n", string_length);
 #endif
-    unsigned long index = 0;
+    size_t index = 0;
 
     char *buffer = (char *)malloc(string_length + 1);
     if (buffer == NULL) {
         return NULL;
     }
-    buffer[string_length] = '\0';
 
     index = string_length;
     int i = 0;
@@ -23,10 +79,12 @@ char *string_reverse(char *input_string) {
         buffer[i] = input_string[index - 1];
         ++i;
         --index;
+    }
+    buffer[string_length] = '\0';
+
 #ifdef DEBUG
     printf("buffer: %s; i: %d; index: %zu\n", buffer, i, index);
 #endif
-    }
 
     return buffer;
 }
