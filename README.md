@@ -21,3 +21,5 @@ This module contains string manipulation functions.
 `string_occurrence`: returns a pointer to a structure struct `string_occurrence_info` containing information about the occurrences of a specified character within the input string
 
 `string_reverse`: returns a reversed string of an input string
+
+`string_insert`: inserts a string into a specified string at an offset and returns the whole string
