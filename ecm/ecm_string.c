@@ -3,6 +3,34 @@
 #include <string.h>
 #include "ecm_string.h"
 
+char *string_reverse(char *input_string) {
+    size_t string_length = strlen(input_string);
+#ifdef DEBUG
+    printf("string length: %zu\n", string_length);
+#endif
+    unsigned long index = 0;
+
+    char *buffer = (char *)malloc(string_length + 1);
+    if (buffer == NULL) {
+        return NULL;
+    }
+    buffer[string_length] = '\0';
+
+    index = string_length;
+    int i = 0;
+
+    while (index > 0) {
+        buffer[i] = input_string[index - 1];
+        ++i;
+        --index;
+#ifdef DEBUG
+    printf("buffer: %s; i: %d; index: %zu\n", buffer, i, index);
+#endif
+    }
+
+    return buffer;
+}
+
 struct string_occurrence_info *string_occurrence(char *input_string, char input_token) {
     char *cursor;
     cursor = input_string;

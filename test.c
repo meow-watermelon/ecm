@@ -6,7 +6,7 @@
 int main() {
     long int n = 2;
     long int number = 123456789;
-    char *str1 = "SDFSDFERTYJHGFDSFGHRRFDVBFGGRFDSFYJUKIJHGFDSCFGBHGVFCDFRETHYJHGFDQWERTYUIOKJHGFDSXCVBNMKLOPIUYTREWSDFGHNMNBVCDEFRGT";
+    char *str1 = "ABCDCBA";
     char c = 'C';
 
     printf("powi(%ld, %d): %ld\n", n, 5, powi(n, 5));
@@ -27,6 +27,17 @@ int main() {
 
     free(p);
     p = NULL;
+
+    char *r = string_reverse(str1);
+    if (r == NULL) {
+        perror("failed to allocate memory for string_reverse");
+        exit(EXIT_FAILURE);
+    }
+
+    printf("reversed string: %s\n", r);
+
+    free(r);
+    r = NULL;
 
     return 0;
 }

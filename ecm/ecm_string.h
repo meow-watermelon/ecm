@@ -24,4 +24,10 @@ extern struct string_occurrence_info *string_occurrence(char *input_string, char
 
 extern short int integer_length(long int integer);
 
+/*
+ * string_reverse: return the reversed string of an string
+ *
+*/
+
+extern char *string_reverse(char *input_string);
 #endif /* ECM_STRING_H */
