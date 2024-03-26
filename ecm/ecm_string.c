@@ -13,7 +13,7 @@ char *string_insert(char *orig_string, char *insert_string, size_t offset) {
         return NULL;
     }
 
-    // if offset is greater than or eauqal to original string index boundary then simply combining 2 strings
+    // if offset is greater than or equal to original string index boundary then simply combining 2 strings
     if (offset >= orig_string_length ) {
         strcpy(buffer, orig_string);
         strcat(buffer, insert_string);
